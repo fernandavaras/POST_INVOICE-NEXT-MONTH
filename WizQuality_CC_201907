@@ -1,0 +1,126 @@
+
+
+
+
+Select 
+
+null "FILE_TYPE",null "PREVIOUS_FILE_REFERENCE",null "FILE_REFERENCE",null"LINE_NUMBER",c.supplier_cbn"PARTNER_CODE", pl.Product_line_id "PRODUCT_LINE",h.SERVICE "SERVICE_CODE",h.OTC "PRODUCT_WARRANTY_CODE", null "REQUEST_FLAG",h.DATE_REPAIR "REQUEST_DATE",c.supplier_Cbn "REQUEST_PARTNER_CODE",null"REQUEST_REFERENCE_SOURCE", h.wty_ref "REQUEST_REFERENCE",null"CUSTOMER_CALL_DATE", 
+
+
+h.FAILURE_REASON,null"CUST_ESC_REASON_CODE ",null"RER_FLAG",null"RER_CODE",null"RER_INTERVENTION_REFERENCE", c.type"CUSTOMER_TYPE", null"CUSTOMER_PARTNER_CODE", 
+
+
+CO.ISO_CODE "CUSTOMER_COUNTRY_CODE",h.ENDUSERNAME "CUSTOMER_NAME", null" ENDUSER_ADDRESS", null"ENDUSER_ZIP_CODE",h.ENDUSERPHONENUMBER"CUSTOMER_PHONE", c.supplier_Cbn "INTERVENTION_PARTNER_CODE",null"INTERVENTION_REFERENCE_SOURCE", h.WTY_REF "INTERVENTION_REFERENCE", h.PRODUCT_NUMBER, 
+
+
+null"PRODUCT_TYPE",null"PRODUCT_OPTION",null"PRODUCT_PART_NUMBER", h.SERIAL_NUMBER "PRODUCT_SERIAL_NUMBER",null"BORN_ON_DATE", null"COLLECT_DEFECTIVE_FLAG", null"COLLECT_DEF_COM_DATE", 
+
+
+h.DATE_REPAIR "COLLECT_DEFECTIVE_ACTUAL_DATE", null"COLLECT_BY_PARTNER_CODE",null"RECEIVE_DEFECTIVE_FLAG", h.DECLARED_DATE "RECEIVE_DEFECTIVE_DATE", null"RECEIVE_BY_PARTNER_CODE",null"FORWARD_DEFECTIVE_FLAG", 
+
+
+null"FORWARD_DEFECTIVE_DATE",null"FORWARD_TO_PARTNER_CODE",null"REREPAIR_FLAG", h.DATE_REPAIR "REPAIR_DATE", null"PRIMARY_SYMPTOM_CODE", 
+
+
+null"REPAIR_NTF_FLAG", 
+
+
+null"SCRAP_DEFECTIVE_PRODUCT_FLAG", 
+
+
+null"SCRAP_CODE", 
+
+
+null"REFURBISH_PRODUCT_FLAG", 
+
+
+null"REFURBISH_CHANGE_SERIAL_FLAG", 
+
+
+null"REFURBISH_NEW_PRODUCT_NUMBER", 
+
+
+null"REFURBISH_NEW_SERIAL_NUMBER", 
+
+
+null"EXCHANGE_PRODUCT_FLAG", 
+
+
+null"EXCHANGE_PRODUCT_NUMBER", 
+
+
+null"EXCHANGE_PRODUCT_SERIAL_NUMBER", 
+
+
+null"SHIPMENT_FLAG",null"ALLOWED_SERVICE", 
+
+
+null"DELIVERY_FLAG", 
+
+
+null"DELIVERY_COMMITTED_DATE", 
+
+
+null"DELIVERY_ACTUAL_DATE", 
+
+
+null"DELIVERY_PARTNER_CODE", 
+
+
+null"ON_HOLD_FLAG", 
+
+
+null"ON_HOLD_CODE", 
+
+
+null"ON_HOLD_WD_NUMBER", 
+
+
+Null "MONTH", 
+
+
+null"PART_DEFECT_CODE_1", 
+
+
+null"REPAIR_ACTION_1", 
+
+
+null"DEFECTIVE_PART_VENDOR_NAME_1", 
+
+
+null"DEFECTIVE_PART_VENDOR_NUMBER_1", 
+
+
+null"DEFECTIVE_PART_SERIAL_NUMBER_1", 
+
+
+null"DEF_PART_PC_DOC_FAIL_CODE_1", 
+
+
+d.PART_DECLARED "ORDERED_PART_NUMBER_1" 
+
+
+from wizadmin.company_profile c, wizadmin.wty_header h, wizadmin.wty_detail d,wizadmin.product_info pl, wizadmin.part_info p, 
+
+
+wizadmin.order_header oh, wizadmin.country co 
+
+
+where c.cust_id=h.cust_id and h.wty_id=d.wty_id 
+
+
+and c.type='COMP_CC' 
+
+
+/* DATE must be updated */
+
+and h.declared_date between '01-jul-2019' and '31-jul-2019' 
+
+
+and h.product_number=pl.product_number and d.PART_DECLARED=p.PART_NUMBER  
+
+
+and oh.po_number = h.wty_ref  
+
+
+and co.country_code=oh.country_code  
