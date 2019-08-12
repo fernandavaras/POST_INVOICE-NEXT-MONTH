@@ -1,0 +1,27 @@
+
+
+
+select c.supplier_cbn, h.*,d.*,i.part_number,part_description,commodity_code 
+
+
+   from wizadmin.wty_header h, wizadmin.wty_Detail d, wizadmin.company_profile c , wizadmin.part_info i 
+
+
+   where  c.cust_id = h.cust_id 
+
+
+   and h.wty_id =d.wty_id 
+
+
+   and i.part_number = d.part_declared 
+
+
+/*   Date needs to be updated */
+
+   and declared_Date between '01-jul-2019' and '31-jul-2019' 
+
+
+   and commodity_code in ('BAI','AC','PS','ODD','BA','RTC') 
+
+
+   and c.type in ('COMP_ASP','COMP_HP_SP') 
