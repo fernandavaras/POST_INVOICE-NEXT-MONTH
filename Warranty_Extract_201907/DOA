@@ -1,24 +1,27 @@
 
 
 
------ 
+
+Select
+
+c.supplier_cbn,
+c.type, h.*, d.*
+
+from wizadmin.company_profile c,wizadmin.wty_header h,WIZADMIN.WTY_DETAIL D
 
 
-Select c.supplier_cbn, c.type, h.*, d.* from wizadmin.company_profile c, wizadmin.wty_header h  , WIZADMIN.WTY_DETAIL D 
+where c.cust_id=h.cust_id
 
 
-where c.cust_id=h.cust_id 
-
-
-AND H.WTY_ID =D.WTY_ID 
+AND H.WTY_ID =D.WTY_ID
 
 
 /*  Date needs to be updated */
 
-and H.declared_DATE between  '01-juL-2019' and '31-juL-2019' 
+and H.declared_DATE between'01/07/2019' and '31/07/2019'
 
 
-and h.wty_type ='WTYHTYPE_DOACLAIM' 
+and h.wty_type ='WTYHTYPE_DOACLAIM'
 
 
-AND c.type in ('COMP_HP_SP','COMP_ASP') 
+AND c.type in ('COMP_HP_SP','COMP_ASP')
