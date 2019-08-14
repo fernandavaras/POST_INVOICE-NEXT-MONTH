@@ -1,33 +1,31 @@
+Select
+
+c.supplier_cbn,c.type,h.*, d.*, PL.PL_CODE,PL.PL_DESCRIPTION
+
+from wizadmin.company_profile c,wizadmin.wty_header h,wizadmin.wty_Detail d, wizadmin.product_info p1,wizadmin.product_line pl
 
 
-
-Select 
-
-c.supplier_cbn, c.type, h.*, d.*, PL.PL_CODE, PL.PL_DESCRIPTION from wizadmin.company_profile c, wizadmin.wty_header h, wizadmin.wty_Detail d  
+where c.cust_id=h.cust_id
 
 
-, wizadmin.product_info p1,  wizadmin.product_line pl 
+and h.wty_id =d.wty_id
 
 
-where c.cust_id=h.cust_id 
+and P1.PRODUCT_NUMBER=H.PRODUCT_NUMBER
 
 
-and h.wty_id =d.wty_id 
+and P1.PRODUCT_LINE_ID=PL.PRODUCT_LINE_ID
 
 
-and P1.PRODUCT_NUMBER=H.PRODUCT_NUMBER 
+and H.declared_DATE between '01-juL-2019' and '31-juL-2019'
 
 
-and P1.PRODUCT_LINE_ID=PL.PRODUCT_LINE_ID 
+and h.wty_type ='WTYHTYPE_PRODWARR'
 
 
-and H.declared_DATE between '01-juL-2019' and '31-juL-2019' 
+and c.type in ('COMP_HP_SP','COMP_ASP')
 
 
-and h.wty_type ='WTYHTYPE_PRODWARR' 
-
-
-and c.type in ('COMP_HP_SP','COMP_ASP') 
 
 
   
