@@ -1,63 +1,61 @@
 
-
-
-
 SELECT 
 
-c.TYPE,c.COMPANY_NAME,h.SERVICE,h.ordered_date,h.po_number,h.LOGON,d.part_ordered,p.PART_DESCRIPTION, 
+c.TYPE,c.COMPANY_NAME,h.SERVICE,h.ordered_date,h.po_number,h.LOGON,d.part_ordered,p.PART_DESCRIPTION,
 
 
-p1.PRODUCT_NUMBER,p1.PRODUCT_DESCRIPTION,p1.PRODUCT_LINE_ID,p.COMMODITY_CODE, co.country_name,otc,pl.pl_code, h1.ENDCOMPANYNAME, serial_number, H1.FORCE_REASON,H1.FORCE_CASE, H1.OTC, H1.WARRANTY_STATUS 
+p1.PRODUCT_NUMBER,p1.PRODUCT_DESCRIPTION,p1.PRODUCT_LINE_ID,p.COMMODITY_CODE, co.country_name,otc,pl.pl_code, h1.ENDCOMPANYNAME, serial_number, H1.FORCE_REASON,H1.FORCE_CASE, H1.OTC, H1.WARRANTY_STATUS
 
 
-FROM wizadmin.ORDER_HEADER h, wizadmin.ORDER_DETAIL d, wizadmin.WTY_HEADER h1, wizadmin.PART_INFO p, wizadmin.PRODUCT_INFO p1, wizadmin.LINK_PART_PRODUCT l,  
+FROM wizadmin.ORDER_HEADER h, wizadmin.ORDER_DETAIL d, wizadmin.WTY_HEADER h1, wizadmin.PART_INFO p, wizadmin.PRODUCT_INFO p1, wizadmin.LINK_PART_PRODUCT l,
 
 
-wizadmin.COMPANY_PROFILE c, wizadmin.COUNTRY co, wizadmin.product_line pl 
+wizadmin.COMPANY_PROFILE c, wizadmin.COUNTRY co, wizadmin.product_line pl
 
 
-WHERE h.order_id=d.order_id 
+WHERE h.order_id=d.order_id
 
 
-AND h1.wty_ref=h.po_number 
+AND h1.wty_ref=h.po_number
 
 
-AND p.part_number=d.part_ordered 
+AND p.part_number=d.part_ordered
 
 
-AND l.part_number=p.part_number 
+AND l.part_number=p.part_number
 
 
-AND l.product_number=p1.product_number 
+AND l.product_number=p1.product_number
 
 
-AND p1.product_number=h1.PRODUCT_NUMBER 
+AND p1.product_number=h1.PRODUCT_NUMBER
 
 
-AND h.cust_id=c.cust_id 
+AND h.cust_id=c.cust_id
 
 
-AND h1.cust_id=c.cust_id 
+AND h1.cust_id=c.cust_id
 
 
-AND h.country_code= co.country_code and pl.product_line_id = p1.product_line_id 
+AND h.country_code= co.country_code and pl.product_line_id = p1.product_line_id
 
 
---AND h.ordered_date>=TO_DATE(TO_CHAR(LAST_DAY(ADD_MONTHS(SYSDATE,-2))+1,'DD-MON-YYYY')) 
+--AND h.ordered_date>=TO_DATE(TO_CHAR(LAST_DAY(ADD_MONTHS(SYSDATE,-2))+1,'DD-MON-YYYY'))
 
 
---AND h.ordered_date <= TO_DATE(TO_CHAR(LAST_DAY(ADD_MONTHS(SYSDATE,-1)),'DD-MON-YYYY')) 
+--AND h.ordered_date <= TO_DATE(TO_CHAR(LAST_DAY(ADD_MONTHS(SYSDATE,-1)),'DD-MON-YYYY'))
 
 
 /*  Date needs to be modified */
 
 
-and h.ordered_date between '01-jul-2019' and '30-jul-2019' 
+and h.ordered_date between '01-jul-2019' and '30-jul-2019'
 
 
-and c.supplier_cbn in ('CCEXP','PETIN','STELBE','PETFE') 
+and c.supplier_cbn in ('CCEXP','PETIN','STELBE','PETFE')
 
 
-AND (h.service='ORDHSERV_CRU' OR h.service='ORDHSERV_CRP'); 
+AND (h.service='ORDHSERV_CRU' OR h.service='ORDHSERV_CRP');
+
 
 
