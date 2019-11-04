@@ -3,8 +3,9 @@
 
 select 
 
-c.supplier_cbn, h.*,d.*,i.part_number,part_description,commodity_code
+c.supplier_cbn, h.Wty_Id, h.Cust_Id, h.Wty_Ref, h.Wty_Type, h.Status, h.Logon, h.Contact_Name, h.Contact_Phone, h.Endusertitle, h.Endusername, h.Enduserphonecountry, h.Enduserphonenumber, h.Endcompanyname, h.Comments, h.Product_Number, h.Serial_Number,h.Preinvoiced_Date, h.Declared_Date, h.Sale_Date, h.Failure_Date, h.Failure_Reason, h.Technician_Name, h.Date_Repair, h.Warranty_Status, h.Warranty_Reject_Reason, h.Warranty_Period, h.Service, h.Data_Origin, h.Enduseremail, h.Part_Claim_Type, h.Force_Order_Flag, h.Force_Reason, h.Force_Case, h.Otc, h.Pop_Number, h.Supplier_Id, d.Wty_Id,
 
+d.Line_number, d.Part_Declared, d.Status, d.Rma_NUMBER, d.Qty_Declared, d.Part_Serial_NUMBER, d.Part_NUMBER_Id, d.Shipment_NUMBER, d.Shipment_date, d.Defective_Serial_NUMBER, d.Packing_REF, d.Part_Type, i.part_number,i.part_description,i.commodity_code
 
 from
 
@@ -21,10 +22,9 @@ and i.part_number = d.part_declared
 
 /*   Date needs to be updated */
 
-and declared_Date between '01/07/2019' and '31/07/2019'
+and declared_Date between '01/10/2019' and '31/10/2019'
 
 
 and commodity_code in ('BAI','AC','PS','ODD','BA','RTC')
-
 
 and c.type in ('COMP_ASP','COMP_HP_SP')
