@@ -1,6 +1,7 @@
 Select
 
-c.supplier_cbn,c.type,h.*, d.*, PL.PL_CODE,PL.PL_DESCRIPTION
+c.supplier_cbn,c.type,h.Wty_Id, h.Cust_Id, h.Wty_Ref, h.Wty_Type, h.Status, h.Logon, h.Contact_Name, h.Contact_Phone, h.Endusertitle, h.Endusername, h.Enduserphonecountry, h.Enduserphonenumber, h.Endcompanyname, h.Comments, h.Product_Number, h.Serial_Number,h.Preinvoiced_Date, h.Declared_Date, h.Sale_Date, h.Failure_Date, h.Failure_Reason, h.Technician_Name, h.Date_Repair, h.Warranty_Status, h.Warranty_Reject_Reason, h.Warranty_Period, h.Service, h.Data_Origin, h.Enduseremail, h.Part_Claim_Type, h.Force_Order_Flag, h.Force_Reason, h.Force_Case, h.Otc, h.Pop_Number, h.Supplier_Id, d.Wty_Id,
+d.Line_number, d.Part_Declared, d.Status, d.Rma_NUMBER, d.Qty_Declared, d.Part_Serial_NUMBER, d.Part_NUMBER_Id, d.Shipment_NUMBER, d.Shipment_date, d.Defective_Serial_NUMBER, d.Packing_REF, d.Part_Type, PL.PL_CODE, PL.PL_DESCRIPTION
 
 from wizadmin.company_profile c,wizadmin.wty_header h,wizadmin.wty_Detail d, wizadmin.product_info p1,wizadmin.product_line pl
 
@@ -17,14 +18,13 @@ and P1.PRODUCT_NUMBER=H.PRODUCT_NUMBER
 and P1.PRODUCT_LINE_ID=PL.PRODUCT_LINE_ID
 
 
-and H.declared_DATE between '01-juL-2019' and '31-juL-2019'
+and H.declared_DATE between '01-10-2019' and '31-10-2019'
 
 
 and h.wty_type ='WTYHTYPE_PRODWARR'
 
 
 and c.type in ('COMP_HP_SP','COMP_ASP')
-
 
 
 
